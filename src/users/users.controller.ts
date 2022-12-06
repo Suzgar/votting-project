@@ -7,8 +7,8 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Get(':register')
-  register(@Param() username: string, password: string) {
+  @Post(':register')
+  register(@Param('username') username: string, @Param('password')password: string) {
     if(username===''||password===''){
       return 'User name and password can not be emptty';
     }
