@@ -6,10 +6,11 @@ import { Vote } from './entities/vote.entity';
 @Injectable()
 export class VotesService {
   private votes: Vote[] = [];
-  create(createVoteDto: CreateVoteDto) {
-    if(this.findOne(createVoteDto.username)){
+  create(username: string) {
+    if(this.findOne(username)){
       return true;
     }
+    const createVoteDto : CreateVoteDto = {username :username}
     this.votes.push(createVoteDto);
     return false;
   }

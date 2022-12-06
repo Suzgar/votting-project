@@ -7,9 +7,9 @@ import { UpdateVoteDto } from './dto/update-vote.dto';
 export class VotesController {
   constructor(private readonly votesService: VotesService) {}
 
-  @Get('votting')
-  create(@Body() createVoteDto: CreateVoteDto) {
-    if(this.votesService.create(createVoteDto)){
+  @Get('votting/:username')
+  create(@Param('username') username: string) {
+    if(this.votesService.create(username)){
       return 'This account have voted!';
     }
     return 'Vote succedded!';
